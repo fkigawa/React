@@ -1,26 +1,36 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import ToDoApp from './ToDoApp';
 
 
 class InputLine extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      typedText: ''
     }
+  }
+
+  handleTyping(event){
+    this.setState({
+      typedText: event.target.value
+    })
+  }
+
+  handleSubmit() {
+    this.props.submit(this.state.typedText)
+    this.setState({
+      typedText: ''
+    })
   }
 
   render(){
     return(
       <div>
-        <form>
           <label>
             Name:
-            <input type="text" name="name" />
+            <input onChange={(event) => this.handleTyping(event)} type="text" value={this.state.typedText} />
           </label>
-          <input type="submit" value="Submit" />
-        </form>
+          <input onClick={() => this.handleSubmit()} type="submit" value="Submit" />
       </div>
     )
   }

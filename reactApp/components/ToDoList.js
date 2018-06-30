@@ -13,7 +13,7 @@ class ToDoList extends React.Component {
   render() {
     return(
     <ul>
-      {this.props.listing.map((taskObj) => <ToDo todos = {taskObj}/>)}
+      {this.props.berry.map((taskObj) => <ToDo todos = {taskObj}/>)}
     </ul>
     )
   }

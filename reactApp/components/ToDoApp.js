@@ -12,12 +12,25 @@ class ToDoApp extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      tahoes: []
+      tahoes: dummyData
     }
   }
 
+  addTodo(task) {
+    var newObj = {};
+    newObj.taskText = task;
+    newObj.completed = false;
+
+    var newState = this.state.tahoes
+    newState.push(newObj);
+
+    this.setState({
+      tahoes: newState
+    })
+  }
+
   componentDidMount(){
-    this.setState = ({
+    this.setState({
       tahoes: dummyData
     })
   }
@@ -25,8 +38,8 @@ class ToDoApp extends React.Component {
   render() {
     return(
       <div>
-        <ToDoList berry = {this.state.tahoes} listing = {dummyData}/>
-        <InputLine/>
+        <ToDoList berry = {this.state.tahoes}/>
+        <InputLine submit = {(task) => this.addTodo(task)}/>
       </div>
     )
   }
